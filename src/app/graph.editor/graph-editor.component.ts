@@ -1,11 +1,21 @@
 import { Component, AfterViewInit } from '@angular/core';
-import * as d3 from 'd3';
+
+declare var GraphEditor: any;
+declare var $: any;
 
 @Component({
     selector: 'app-graph-editor',
     templateUrl: './graph-editor.component.html'
 })
 export class GraphEditorComponent {
+
+    private graphEditor;
+
+    public constructor () {
+        $( document ).ready(function() {
+            this.graphEditor = new GraphEditor('#editor', { });
+        });
+    }
 
     // private onStart(): void {
     //     this.editor = d3.select('#editor')
