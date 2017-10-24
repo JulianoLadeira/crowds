@@ -899,8 +899,8 @@ function create_controls(div) {
         buttondiv = div + ' #graph_editor_button_container',
     canvas = $(div + ' canvas')[0];
     $(div).prepend('<div id="graph_editor_button_container"></div>');
-    $('<div id="live_button" class="graph_editor_button">live</div>')
-        .appendTo(buttondiv).click(toggle_live);
+    // $('<div id="live_button" class="graph_editor_button">live</div>')
+    //     .appendTo(buttondiv).click(toggle_live);
     $('<div id="tweaks_button" class="graph_editor_button">tweaks</div>')
         .appendTo(buttondiv)
         .toggle(function() {
@@ -928,15 +928,15 @@ function create_controls(div) {
             $(div + ' #tweaks_button').toggleClass('graph_editor_button_on');
     });
 
-    $('<div id="help_button" class="graph_editor_button">?</div>')
-        .appendTo(buttondiv)
-        .click(function() {
-            $('#help_dialog').dialog('open');
-        });
+    // $('<div id="help_button" class="graph_editor_button">?</div>')
+    //     .appendTo(buttondiv)
+    //     .click(function() {
+    //         $('#help_dialog').dialog('open');
+    //     });
 
-    $('<div id="undo_button" class="graph_editor_button">undo</div>')
-        .appendTo(buttondiv)
-        .click(undo_remove).toggleClass('graph_editor_undo_disabled');
+    // $('<div id="undo_button" class="graph_editor_button">undo</div>')
+    //     .appendTo(buttondiv)
+    //     .click(undo_remove).toggleClass('graph_editor_undo_disabled');
 
     $('<div id="reset_button" class="graph_editor_button">reset</div>')
         .appendTo(buttondiv)
@@ -946,14 +946,14 @@ function create_controls(div) {
             }
         });
 
-    $('<div id="image_button" class="graph_editor_button">image</div>')
-        .appendTo(buttondiv)
-        .click(function() {
-            var img = canvas.toDataURL("image/png");
-            window.open(img, "Graph Editor Image",
-                "menubar=false,toolba=false,location=false,width=" + SIZE.x +
-                ",height=" + SIZE.y);
-        });
+    // $('<div id="image_button" class="graph_editor_button">image</div>')
+    //     .appendTo(buttondiv)
+    //     .click(function() {
+    //         var img = canvas.toDataURL("image/png");
+    //         window.open(img, "Graph Editor Image",
+    //             "menubar=false,toolba=false,location=false,width=" + SIZE.x +
+    //             ",height=" + SIZE.y);
+    //     });
 
     $(div).append('<div id="graph_editor_tweaks"></div>');
     var tweaks = div + ' #graph_editor_tweaks';

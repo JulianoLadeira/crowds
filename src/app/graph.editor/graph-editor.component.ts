@@ -7,71 +7,61 @@ declare var $: any;
     selector: 'app-graph-editor',
     templateUrl: './graph-editor.component.html'
 })
-export class GraphEditorComponent {
+export class GraphEditorComponent implements AfterViewInit {
 
-    private graphEditor;
+    private graphEditor: any;
 
-    public constructor () {
-        $( document ).ready(function() {
-            this.graphEditor = new GraphEditor('#editor', { });
-        });
+    public constructor () { }
+
+    public ngAfterViewInit(): void {
+        this.graphEditor = new GraphEditor('#editor', { });
     }
 
-    // private onStart(): void {
-    //     this.editor = d3.select('#editor')
-    //         .append('svg:svg')
-    //         .attr('width', this.windowWidth)
-    //         .attr('height', this.windowHeight)
-    //         .attr('pointer-events', 'all');
+    public hello (): void {
+        console.log(this.buildAdjacencyMatrix());
+    }
 
-    //     const outer = d3.select('#editor')
-    //         .append('svg:svg')
-    //         .attr('width', this.windowWidth)
-    //         .attr('height', this.windowHeight)
-    //         .attr('pointer-events', 'all');
+    /**
+     * Builds the adjacency matrix of the current graph.
+     */
+    public buildAdjacencyMatrix(): boolean[][] {
 
-    //     this.vis = outer
-    //         .append('svg:g')
-    //           .call(d3.behavior.zoom().on('zoom', this.rescale))
-    //           .on('dblclick.zoom', null)
-    //         .append('svg:g')
-    //           .on('mousemove', mousemove)
-    //           .on('mousedown', mousedown)
-    //           .on('mouseup', mouseup);
+        try {
 
-    //     this.vis.append('svg:rect')
-    //           .attr('width', this.windowWidth)
-    //           .attr('height', this.windowHeight)
-    //           .attr('fill', 'white');
+            const rawData: any = this.graphEditor.get_raw_data();
+            const nodeCount: number = rawData.nodes.length;
+            const adjacencyMatrix: boolean[][] = [];
 
-    //     this.force = d3.layout.force()
-    //         .size([this.windowWidth, this.windowHeight])
-    //         .nodes([{}]) // initialize with a single node
-    //         .linkDistance(50)
-    //         .charge(-200)
-    //         .on('tick', tick);
+            let counter = 0;
 
-    //     this.drag_line = this.vis.append('line')
-    //         .attr('class', 'drag_line')
-    //         .attr('x1', 0)
-    //         .attr('y1', 0)
-    //         .attr('x2', 0)
-    //         .attr('y2', 0);
+            while (counter < nodeCount) {
+                const newLine: boolean[] = new Array<boolean>(nodeCount);
+                adjacencyMatrix.push(newLine);
+                counter++;
+            }
 
-    //     this.nodes = this.force.nodes();
-    //     this.links = this.force.links();
-    //         // node = vis.selectAll(".node"),
-    //         // link = vis.selectAll(".link");
-    //     d3.select(window).on('keydown', keydown);
-    //     this.redraw();
-    // }
+            for (const edge of rawData.edge_list) {
+                const index1: number = parseInt(edge.node1.label, null);
+                const index2: number = parseInt(edge.node2.label, null);
 
-    // private rescale() {
-    //     const trans = d3.event.translate;
-    //     const scale = d3.event.scale;
+                const lowerIndex: number = Math.min(index1, index2);
+                const upperIndex: number = Math.max(index1, index2);
 
-    //     this.vis.attr('transform',
-    //         'translate(' + trans + ')'
-    //         + ' scale(' + scale + ')');
-    //   }
+                adjacencyMatrix[index1][index2] = true;
+                adjacencyMatrix[index2][index1] = true;
+            }
+
+            for (const line of adjacencyMatrix) {
+                for (counter = 0; counter < nodeCount; counter++) {
+                    if (!line[counter]) {
+                        line[counter] = false;
+                    }
+                }
+            }
+
+            return adjacencyMatrix;
+        } catch (exception) {
+            return null;
+        }
+    }
 }
