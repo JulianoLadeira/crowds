@@ -701,6 +701,14 @@ Controller = function() {
             if (e.keyCode === 16) {
                 SHIFT = true;
             }
+            if (e.keyCode === 46 && selected_object) {
+                if (selected_object instanceof Vertex) {
+                    remove_node(selected_object);
+                } else if (selected_object instanceof Edge) {
+                    selected_object.dec_mult();
+                }
+                this.unselect_object();
+            }
         },
         keyup: function(e) {
             SHIFT = false;

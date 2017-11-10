@@ -1,4 +1,4 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit, HostListener } from '@angular/core';
 
 declare var GraphEditor: any;
 declare var $: any;
@@ -10,6 +10,7 @@ declare var $: any;
 export class GraphEditorComponent implements AfterViewInit {
 
     private graphEditor: any;
+    private key: any;
 
     public constructor () { }
 
@@ -18,6 +19,7 @@ export class GraphEditorComponent implements AfterViewInit {
     }
 
     public hello (): void {
+        this.graphEditor.delete_selected_elements();
         console.log(this.buildAdjacencyMatrix());
     }
 
