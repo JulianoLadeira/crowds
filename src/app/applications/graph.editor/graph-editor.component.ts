@@ -19,7 +19,6 @@ export class GraphEditorComponent implements AfterViewInit {
     }
 
     public hello (): void {
-        this.graphEditor.delete_selected_elements();
         console.log(this.buildAdjacencyMatrix());
     }
 
