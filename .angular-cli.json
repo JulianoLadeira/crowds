@@ -23,7 +23,8 @@
       ],
       "scripts": [
         "./assets/js/graph-editor.js",
-        "./assets/js/jquery-ui-1.8.20.custom.min.js"
+        "./assets/js/jquery-ui-1.8.20.custom.min.js",
+        "./assets/js/papaparse.min.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

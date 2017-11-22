@@ -2,8 +2,13 @@
     <nav>
         <a>Navigation:</a>
             <ul>
-                <li><a routerLink = '/motivation' routerLinkActive = 'active'>Motivation</a></li>
-                <li><a routerLink = '/graph-editor' routerLinkActive = 'active'>Graph Editor</a></li>
+                <button (click) = "redirect('./')">Introdução</button>
+                <br>
+                <button (click) = "redirect('./fundaments')">Fundamentos</button>
+                <br>
+                <button (click) = "redirect('./motivation')">Motivação</button>
+                <br>
+                <button (click) = "redirect('./applications/graph-editor')">Editor de Grafos</button>
             </ul>
     </nav>      
 <div>

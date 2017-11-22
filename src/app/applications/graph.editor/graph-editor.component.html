@@ -1,5 +1,18 @@
 <div style = 'border-style: groove'>
+
+    Separar em tabs diferentes os dois métodos de entrada.
+
     <div id = 'editor'>
     </div>
-    <button (click) = 'hello()'>Hello</button>
+    <button (click) = 'buildAdjacencyMatrixFromGraphEditor()'>Construir matriz pelo grafo</button>
+    <br>
+    <br>
+    <input type="file" id="input"/>
+    <br>
+    <button (click) = 'parseInputFile()'>Fazer parse de arquivo</button>
+    <br>
+    <br>
+    <br>
+    <br>
+    <button (click) = 'printInputFile()'>Imprimir matriz no console</button>
 </div>

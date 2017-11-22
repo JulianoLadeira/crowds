@@ -1,3 +1,4 @@
+import { FundamentsComponent } from './fundaments/fundaments.component';
 import { MotivationComponent } from './motivation/motivation.component';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
@@ -7,8 +8,9 @@ import { IntroductionComponent } from './introduction/introduction.component';
 @NgModule({
     imports: [
         RouterModule.forRoot([
-            { path: 'introduction', component: IntroductionComponent, data: { title : 'Hello Again John' } },
-            { path: 'motivation', component: MotivationComponent },
+            { path: '', component: IntroductionComponent, data: { title : 'Introdução' } },
+            { path: 'motivation', component: MotivationComponent, data: { title : 'Motivação' } },
+            { path: 'fundaments', component: FundamentsComponent, data: { title : 'Fundamentos' } },
             { path: 'applications', loadChildren: './applications/applications.module#ApplicationsModule' }
         ],
         { useHash: true }

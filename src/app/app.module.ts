@@ -1,3 +1,4 @@
+import { FundamentsComponent } from './fundaments/fundaments.component';
 import { IntroductionComponent } from './introduction/introduction.component';
 import { CommonComponentsModule } from './.common-components/common-components.module';
 import { AppRoutingModule } from './app.routing';
@@ -14,11 +15,13 @@ import { Title } from '@angular/platform-browser';
   declarations: [
     AppComponent,
     IntroductionComponent,
-    MotivationComponent
+    MotivationComponent,
+    FundamentsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    RouterModule,
     CommonComponentsModule,
     ApplicationsModule
   ],
