@@ -20,7 +20,8 @@
       "prefix": "app",
       "styles": [
         "./assets/css/graph-editor-styles.css",
-        "./assets/css/bootstrap.css"
+        "./assets/css/bootstrap.css",
+        "./assets/css/header.css"
       ],
       "scripts": [
         "./assets/js/graph-editor.js",

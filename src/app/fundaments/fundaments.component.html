@@ -1,3 +1,113 @@
-<div>
-    Revisão de teoria dos jogos e qif
+<div class = 'container'>
+
+    <h1 style = 'text-align: center'>Teoria dos Jogos</h1>
+    
+    <br>
+    <br>
+
+    <p>    
+        O que economistas denominam teoria dos jogos psicólogos chamam de teoria das situações sociais, 
+        o que é uma descrição acurada do que é teoria dos jogos. Apesar de a teoria dos jogos ser relevante 
+        para jogos poker ou blackjack, a maior parte da pesquisa nessa área é focada em como grupos de pessoas 
+        interagem. Há duas principais vertentes na área de teoria dos jogos, a dos jogos cooperativos e dos 
+        jogos não cooperativos. 
+    </p>
+    
+    <p>
+        Em teoria dos jogos, jogos cooperativos são jogos com competições entre grupos de jogadores, devido à 
+        imposição externa de comportamento cooperativo (como por exemplo através de leis). Um exemplo de jogo 
+        cooperativo são jogos multijogadores em equipe. Em Dota, por exemplo, um jogo competitivo entre duas 
+        equipes de cinco jogadores, jogadores não podem mudar de equipe ou trair sua própria equipe para ter 
+        um resultado diferente para si próprio dentro dos termos do jogo, caracterizando um jogo cooperativo.
+    </p>
+    
+    <p>    
+        Jogos não cooperativos, em contrapartida, não permitem formações de grupos de jogadores, ou todas as 
+        alianças são estabelecidas através de mecanismos auto reguladores, como por exemplo, através de ameaças. 
+        Um exemplo real de aplicações de teoria de jogos não cooperativos pode ser visto nas alianças formadas 
+        durante uma guerra. Dentro de uma aliança, um país pode trair os outros caso assuma que a recompensa 
+        esperada por trair sua aliança seja maior que a recompensa por continuar dentro dela, seja porque os 
+        adversários prometeram uma recompensa ou porque continuar na aliança se tornou muito caro, por exemplo.
+    </p>
+
+    <p>
+        Outro conceito importante dentro do campo de teoria dos jogos é o conceito de equilíbrio de Nash. Este é 
+        uma solução para um jogo não cooperativo envolvendo dois ou mais jogadores aonde cada jogador conhece o 
+        equilíbrio de estratégias dos outros jogadores, e nenhum jogador tem nada a ganhar mudando sua própria 
+        estratégia. Suponha o jogo a seguir com dois jogadores e a seguinte matriz de payoffs, onde G(A, B) é o 
+        payoff dos jogadores A e B respectivamente:
+    </p> 
+           
+    <style type="text/css">
+        .tg  {border-collapse:collapse;border-spacing:0;float: center;}
+        .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+        .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+        .tg .tg-yw4l{vertical-align:top}
+    </style>
+    <table align = "center" class="tg">
+        <tr>
+        <th class="tg-yw4l">Jogador B\Jogador A</th>
+        <th class="tg-yw4l">Ação A</th>
+        <th class="tg-yw4l">Ação B</th>
+        </tr>
+        <tr>
+        <td class="tg-yw4l">Ação X</td>
+        <td class="tg-yw4l">(100, 0)</td>
+        <td class="tg-yw4l">(2, 2)</td>
+        </tr>
+        <tr>
+        <td class="tg-yw4l">Ação Y</td>
+        <td class="tg-yw4l">(-1, 0)</td>
+        <td class="tg-yw4l">(3, 3)</td>
+        </tr>
+    </table>
+
+        <br>
+        
+
+    <p>
+        O Jogador B sabe que A não tem incentivo para escolher a Ação A, já que seu payoff sempre será maior 
+        se escolher a ação B. Portanto, sabendo disso, B não tem incentivo para escolher a ação X, pois seu 
+        payoff será maior caso escolha a ação Y. Portanto, para esse jogo, as estratégias B e Y são um equilíbrio 
+        de Nash. 
+    </p>    
+    
+    <p>
+        Em teoria dos jogos, denominam-se estratégias puras estratégias que definem completamente como um jogador 
+        irá se comportar em um jogo. Estratégias mistas, em contrapartida, são estratégias onde o jogador escolhe 
+        alguma estratégia pura com uma probabilidade predefinida para cada estratégia pura. Como essas probabilidades 
+        são contínuas, há infinitas estratégias mistas para um jogador em um jogo.	
+    </p>
+       
+    <br>
+    <br>
+            
+    <h1 style = 'text-align: center'>Quantitative Information Flow</h1>
+    
+    <br>
+    <br>
+      
+    <p> 
+        QIF é um framework usado para medir a quantidade de informação vazada em um sistema. Um segredo é uma informação 
+        escondida em um sistema, como por exemplo a senha de um usuário do sistema. Geralmente, qualquer um tem um 
+        conhecimento parcial sobre essa informação, como por exemplo o conjunto de todas as senhas possíveis neste sistema.
+    </p>
+       
+    <p>
+        A vulnerabilidade de um segredo é definida como a probabilidade de alguém descobrir corretamente o segredo em uma 
+        única tentativa. A vulnerabilidade de uma senha de n bits é 1/2n, por exemplo.
+    </p>
+       
+    <p>
+        Um canal é um sistema que processa um segredo X e fornece uma saída Y. No caso de canais determinísticos, essa saída 
+        é única. É possível que exista mais de uma saída possível para uma mesma entrada em um canal. Nesse caso, o canal é 
+        denominado canal probabilístico. A importância deste conceito é a medida do quanto o processamento de um segredo aumenta 
+        sua vulnerabilidade. Por exemplo, se um invasor quer descobrir a senha de um sistema fechado, e a validação da senha 
+        entrada utiliza o algoritmo mais eficiente possível (a senha entrada é rejeitada assim que o sistema determina que ela 
+        não é válida), um invasor pode utilizar a medida de tempo para essa validação para medir o quão próximo ou distante ele 
+        está da senha correta. Neste caso, o canal aumenta a medida de certeza da entrada ao invasor, mesmo a vulnerabilidade do 
+        segredo sendo independente do canal. QIF fornece ferramentas para medir quantitativamente o vazamento de informação causado 
+        pelo canal.
+    </p>
+        
 </div>

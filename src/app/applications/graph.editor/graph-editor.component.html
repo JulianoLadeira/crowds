@@ -1,18 +1,105 @@
-<div class = 'container-fluid'>
+<div class = 'container'>
 
-    Separar em tabs diferentes os dois métodos de entrada.
-
-    <div id = 'editor'>
-    </div>
-    <button class = "btn-primary" (click) = 'buildAdjacencyMatrixFromGraphEditor()'>Construir matriz pelo grafo</button>
+    <h1 style = 'text-align: center'>Ataque ao anonimato do protocolo Crowds</h1>
+    
     <br>
+    <br>
+    
+    <p>    
+        Um exemplo de aplicação de Quantitative Information Flow é uma situação de ataque ao anonimato
+        de uma rede móvel ad-hoc (MANET) utilizando o protocolo Crowds. MANETs são redes que se auto 
+        configuram continuamente, e são compostas por dispositivos móveis conectados sem fio. Em uma 
+        rede dessas, nós podem se mover no espaço e se comunicar com nós próximos, portanto as ligações 
+        diretas de cada nó mudam continuamente. Para garantir o funcionamento da rede, cada nó deve 
+        transmitir dados não relacionados com seu próprio uso. O resultado é uma rede dinâmica, com 
+        topologia autônoma.
+    </p>
+
+    <p>
+        protocolo Crowds é uma rede proposta para tráfego anônimo em uma rede. A ideia principal do protocolo 
+        é esconder as mensagens de cada usuário roteando-as aleatoriamente dentro de um grupo de usuários 
+        similares. Desta forma, nenhum dos usuários pode ter certeza de onde uma mensagem foi originada.
+    </p>
+
+    <p>
+        Nesta aplicação, um jogo será modelado, onde, dentro da rede, existe um agente atacante que busca 
+        quebrar o anonimato da rede. O atacante adiciona um nó corrompido na rede (que aceita novos nós 
+        por ser uma rede MANET). Esse nó busca descobrir qual o nó que original a mensagem. O objetivo 
+        do atacante é escolher a melhor localização para o nó corrompido para comprometer ao máximo o 
+        anonimato da rede. Esta solução não é trivial. É benéfico para o atacante adicionar um nó conectado 
+        a vários outros nós, mas ao mesmo tempo este pode não ser um lugar ótimo para se ter medida de 
+        certeza da origem da mensagem.    
+    </p>
+
+    <p>
+        Ao mesmo tempo que existe um atacante na rede, um administrador pode adicionar um nó em um local 
+        vulnerável da rede. Como este nó nunca gera mensagens, apenas entrega as mensagens que ele recebe, 
+        seu anonimato não é importante, o que diminui a vulnerabilidade do canal como um todo, e tal qual 
+        o nó atacante é indetectável, o mesmo vale para este nó. O mesmo também vale sobre as considerações 
+        sobre a otimalidade da localização deste nó.
+    </p>
+
+    <p>
+        O jogo que será resolvido, portanto, consiste em um jogo não cooperativo entre o atacante e o 
+        administrador. Ambos os jogadores podem realizar as mesmas ações, que é a adição de seu respectivo 
+        nó em um determinada localização. A utilidade de cada ação pode ser medida como a certeza de o 
+        atacante determinar qual nó gerou uma determinada mensagem (esta utilidade é negativa para o 
+        administrador).
+    </p>
+
+    <p>
+        Utilizando o editor de grafos abaixo, você pode modelar uma topologia de rede para ser utilizando
+        em um simulador que encontra os lugares ideais para tanto o atacante quanto o defensor adicionarem
+        os seus nós.
+    </p>
+
+    <div class = "row" style = "align-items: center">
+        <div class = "col-3"></div>
+        <div class = "col-9">
+                <div id = 'editor' >
+                </div>
+                <div class="row">
+                    <div class="col-2"></div>
+                    <div class="col-10">
+                            <button class = "btn-primary" (click) = 'buildAdjacencyMatrixFromGraphEditor()'>Construir matriz pelo grafo</button>
+                    </div>
+                </div>
+                    
+        </div>
+    </div>
+
+    <br>
+    <br>
+
+    <p>
+        Também é possível submeter a topologia em um arquivo. Esse arquivo deve ser um csv composto
+        pelos caracteres '1' ou '0', onde o valor 1 indica que os respectivos nós da posição do 
+        arquivo possuem conexão e 0 indica que não possuem conexão. O arquivo deve ser terminado no
+        caracter 'new line' e a matriz no arquivo deve ser simétrica. A seguir um exemplo de arquivo:
+    </p>
+
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-11">
+                <div>0,1,1</div>
+                <div>1,0,1</div>
+                <div>1,1,0</div>
+                <div></div>
+        </div>
+    </div>
+
+    <br>
+    
+    <p>
+        Esse csv indica um grafo com 3 nós, todos conectados entre si.
+    </p>
+
     <br>
     <input type="file" id="input"/>
     <br>
-    <button (click) = 'parseInputFile()'>Fazer parse de arquivo</button>
+    <br>
+    <button class = "btn-primary" (click) = 'parseInputFile()'>Fazer parse de arquivo</button>
     <br>
     <br>
-    <br>
-    <br>
-    <button (click) = 'printInputFile()'>Imprimir matriz no console</button>
+    <button class = "btn-primary" (click) = 'printInputFile()'>Imprimir matriz no console</button>
 </div>

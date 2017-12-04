@@ -385,6 +385,7 @@ function get_closest_node(v) {
 
 function remove_edge(edge) {
     edge_list.splice(edge_list.indexOf(edge), 1);
+    draw();
 }
 
 function remove_node(node) {
@@ -725,25 +726,25 @@ Controller = function() {
                 }
                 this.unselect_object();
             }
-            if (String.fromCharCode(e.charCode) === 'l') {
-                toggle_live();
-            }
-            if (String.fromCharCode(e.charCode) === 'f') {
-                SHOWFPS = !SHOWFPS;
-            }
-            if (String.fromCharCode(e.charCode) === 'r' && selected_object instanceof Vertex) {
-                selected_object.toggle_freeze();
-                this.unselect_object();
-            }
-            if (String.fromCharCode(e.charCode) === '+' && selected_object instanceof Edge) {
-                selected_object.inc_mult();
-            }
-            if (String.fromCharCode(e.charCode) === 'o' && selected_object instanceof Vertex) {
-                toggle_loop(selected_object);
-            }
-            if (String.fromCharCode(e.charCode) === 's' && selected_object instanceof Edge) {
-                this.select_object(split(selected_object));
-            }
+            // if (String.fromCharCode(e.charCode) === 'l') {
+            //     toggle_live();
+            // }
+            // if (String.fromCharCode(e.charCode) === 'f') {
+            //     SHOWFPS = !SHOWFPS;
+            // }
+            // if (String.fromCharCode(e.charCode) === 'r' && selected_object instanceof Vertex) {
+            //     selected_object.toggle_freeze();
+            //     this.unselect_object();
+            // }
+            // if (String.fromCharCode(e.charCode) === '+' && selected_object instanceof Edge) {
+            //     selected_object.inc_mult();
+            // }
+            // if (String.fromCharCode(e.charCode) === 'o' && selected_object instanceof Vertex) {
+            //     toggle_loop(selected_object);
+            // }
+            // if (String.fromCharCode(e.charCode) === 's' && selected_object instanceof Edge) {
+            //     this.select_object(split(selected_object));
+            // }
             if (!LIVE) draw();
         },
         mouseleave: function() {
@@ -909,32 +910,32 @@ function create_controls(div) {
     $(div).prepend('<div id="graph_editor_button_container"></div>');
     // $('<div id="live_button" class="graph_editor_button">live</div>')
     //     .appendTo(buttondiv).click(toggle_live);
-    $('<div id="tweaks_button" class="graph_editor_button">tweaks</div>')
-        .appendTo(buttondiv)
-        .toggle(function() {
-            $(div).animate(
-                {'width': SIZE.x + 310 + 'px'},
-                {
-                    queue: true,
-                    duration: 'fast',
-                    easing: 'linear',
-                    complete: function() {
-                        $(div + ' #graph_editor_tweaks').slideToggle('fast');
-                        UIside_panel_opened = true;
-                    }
-            });
-            $(div + ' #tweaks_button').toggleClass('graph_editor_button_on');
-        },
-        function() {
-            $(div + ' #graph_editor_tweaks').slideToggle(
-                'fast', function (){
-                    $(div).animate(
-                        {'width': SIZE.x +'px'},
-                        {queue: true, duration: 'fast', easing: 'linear'});
-                    UIside_panel_opened = false;
-                });
-            $(div + ' #tweaks_button').toggleClass('graph_editor_button_on');
-    });
+    // $('<div id="tweaks_button" class="graph_editor_button">tweaks</div>')
+    //     .appendTo(buttondiv)
+    //     .toggle(function() {
+    //         $(div).animate(
+    //             {'width': SIZE.x + 310 + 'px'},
+    //             {
+    //                 queue: true,
+    //                 duration: 'fast',
+    //                 easing: 'linear',
+    //                 complete: function() {
+    //                     $(div + ' #graph_editor_tweaks').slideToggle('fast');
+    //                     UIside_panel_opened = true;
+    //                 }
+    //         });
+    //         $(div + ' #tweaks_button').toggleClass('graph_editor_button_on');
+    //     },
+    //     function() {
+    //         $(div + ' #graph_editor_tweaks').slideToggle(
+    //             'fast', function (){
+    //                 $(div).animate(
+    //                     {'width': SIZE.x +'px'},
+    //                     {queue: true, duration: 'fast', easing: 'linear'});
+    //                 UIside_panel_opened = false;
+    //             });
+    //         $(div + ' #tweaks_button').toggleClass('graph_editor_button_on');
+    // });
 
     // $('<div id="help_button" class="graph_editor_button">?</div>')
     //     .appendTo(buttondiv)
@@ -946,10 +947,10 @@ function create_controls(div) {
     //     .appendTo(buttondiv)
     //     .click(undo_remove).toggleClass('graph_editor_undo_disabled');
 
-    $('<div id="reset_button" class="graph_editor_button">reset</div>')
+    $('<div id="reset_button" class="graph_editor_button">Limpar Grafo</div>')
         .appendTo(buttondiv)
         .click(function() {
-            if (confirm("The graph will be irreversibly erased. This operation cannot be undone.")) {
+            if (confirm("O grafo será apagado. Essa operação não pode ser desfeita.")) {
                 erase_graph();
             }
         });
@@ -1107,7 +1108,7 @@ function init() {
         SIZE.x + '" height = "' + SIZE.y +
         '" >Your browser does not support canvas.</canvas>');
     canvastag = $(div+' canvas');
-    $(div).css({width: SIZE.x+'px'});
+    $(div).css({width: (SIZE.x + 45) +'px'});
     ctx = canvastag[0].getContext('2d');
     ctx.translate(0.5, 0.5);  // makes everything prettier.
     canvastag.attr('tabindex', '0');
